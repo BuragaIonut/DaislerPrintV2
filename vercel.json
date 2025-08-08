@@ -1,0 +1,17 @@
+{
+    "buildCommand": "cd frontend && npm run build",
+    "outputDirectory": "frontend/.next",
+    "installCommand": "cd frontend && npm install",
+    "functions": {
+      "api/*.py": {
+        "runtime": "@vercel/python@5.0.0",
+        "excludeFiles": "{.next,*.cache,node_modules,public,app}/**"
+      }
+    },
+    "rewrites": [
+      {
+        "source": "/api/(.*)",
+        "destination": "/api/index"
+      }
+    ]
+}
