@@ -174,8 +174,8 @@ export default function Home() {
           fileToSend = new File([blob], "crop.png", { type: "image/png" });
         }
       }
-    } catch (err: any) {
-      setError(err.message || "Crop failed");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Crop failed");
       return;
     }
 
@@ -213,8 +213,8 @@ export default function Home() {
       }
       const data = await res.json();
       setResult(data.result ?? "No result");
-    } catch (err: any) {
-      setError(err.message || "Unexpected error");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Unexpected error");
     } finally {
       setLoading(false);
     }
@@ -252,8 +252,8 @@ export default function Home() {
           fileToSend = new File([blob], "crop.png", { type: "image/png" });
         }
       }
-    } catch (err: any) {
-      setError(err.message || "Crop failed");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Crop failed");
       return;
     }
 
@@ -280,8 +280,8 @@ export default function Home() {
       const blob = await res.blob();
       if (processedUrl) URL.revokeObjectURL(processedUrl);
       setProcessedUrl(URL.createObjectURL(blob));
-    } catch (err: any) {
-      setError(err.message || "Processing error");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Processing error");
     }
   };
 
