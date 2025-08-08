@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0b1021;
+  --foreground: #e6e9f2;
+  --card: #111936;
+  --muted: #8e97b5;
+  --accent: #6366f1;
+  --accent-2: #22c55e;
 }
 
 @theme inline {
@@ -12,15 +16,45 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* Always use our aesthetic; ignore prefers-color-scheme */
 
 body {
-  background: var(--background);
+  background: linear-gradient(180deg, #0b1021 0%, #0d1227 100%);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.card {
+  background: radial-gradient(120% 120% at 0% 0%, #0f1733 0%, #0c132a 100%);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+.glass {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent) 0%, #7c3aed 100%);
+  color: white;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(99,102,241,0.3);
+}
+
+.badge {
+  color: white;
+  background: linear-gradient(90deg, var(--accent-2) 0%, #16a34a 100%);
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
 }
