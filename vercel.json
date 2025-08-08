@@ -7,14 +7,12 @@
         "excludeFiles": "{.next,*.cache,node_modules,public,app}/**"
       }
     },
-    "rewrites": [
-      {
-        "source": "/api",
-        "destination": "/api/index"
-      },
-      {
-        "source": "/api/(.*)",
-        "destination": "/api/index/$1"
-      }
-  ]
-}
+      "builds": [
+        { "src": "frontend/package.json", "use": "@vercel/next@latest" },
+        { "src": "api/**/*.py", "use": "@vercel/python@5.0.0" }
+      ],
+      "routes": [
+        { "src": "/api(?:/.*)?", "dest": "/api/index.py" },
+        { "src": "/(.*)", "dest": "frontend/$1" }
+      ]
+    }
