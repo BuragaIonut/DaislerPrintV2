@@ -1,1 +1,2 @@
-# No external dependencies needed for basic HTTP handler
+fastapi
+uvicorn
